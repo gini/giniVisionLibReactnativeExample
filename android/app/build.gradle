@@ -119,6 +119,8 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+apply from: rootProject.file('gradle/gini_credentials.gradle')
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -153,6 +155,8 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            resValue 'string', 'gini_client_id', clientId
+            resValue 'string', 'gini_client_secret', clientSecret
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -181,6 +185,11 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    implementation("net.gini:gini-vision-lib:3.11.3")
+    implementation("net.gini:gini-vision-network-lib:3.11.3") {
+        exclude group: 'com.parse.bolts', module: 'bolts-android'
+    }
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

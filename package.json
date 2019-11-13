@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "info": "^1.0.0",
-    "react": "16.8.1",
-    "react-native": "^0.61.3"
+    "react": "16.11.0",
+    "react-native": "^0.61.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.0",
-    "@babel/runtime": "^7.5.0",
+    "@babel/core": "^7.7.2",
+    "@babel/runtime": "^7.7.2",
     "@react-native-community/eslint-config": "^0.0.3",
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
